@@ -123,3 +123,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CRIPSY_TEMPLATE_PACK = 'bootstrap4'
+
+#redirects to home page when login
+LOGIN_REDIRECT_URL = 'Submit-Data'
+#takes user to login page when trying to do something that requires to be logged in
+LOGIN_URL = 'login'
