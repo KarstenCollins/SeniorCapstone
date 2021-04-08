@@ -13,5 +13,17 @@
     </div>
   </div>
   <!-- FORM HERE -->
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Profile Info</legend>
+        <!--Displays form as crispy style-->
+        {{ user_form|crispy }}
+        {{ profile_form|crispy }}
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Update</button>
+    </div>
+</form>
 </div>
 {% endblock content %}
