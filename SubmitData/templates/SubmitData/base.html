@@ -45,21 +45,30 @@
         </nav>
       </header>
 
-    <!--Sidebar--> 
+    <!--Sidebar-->
     <main role="main" class="container">
     <div class="row">
         <div class="col-md-8">
-        {% block content %}{% endblock %}
+          <!--print out success message-->
+          {% if messages %}
+            {% for message in messages%}
+              <div class="alert alert-{{ message.tags }}">=
+                {{ message }}
+              </div>
+            {% endfor %}
+          {% endif %}
+          <!--end of message printing-->
+          {% block content %}{% endblock %}
         </div>
         <div class="col-md-4">
         <div class="content-section">
-            <h3>Our Sidebar</h3>
-            <p class='text-muted'>You can put any information here you'd like.
+            <h3>Billing Options</h3>
+            <p class='text-muted'>Access Features of the app here.
             <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Latest Posts</li>
-                <li class="list-group-item list-group-item-light">Announcements</li>
-                <li class="list-group-item list-group-item-light">Calendars</li>
-                <li class="list-group-item list-group-item-light">etc</li>
+                <li class="list-group-item list-group-item-light">Past Bills</li>
+                <li class="list-group-item list-group-item-light">Bills Due in the Future</li>
+                <!--<li class="list-group-item list-group-item-light">Calendars</li>-->
+                <!--<li class="list-group-item list-group-item-light">etc</li>-->
             </ul>
             </p>
         </div>
