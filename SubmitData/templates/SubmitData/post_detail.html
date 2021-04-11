@@ -9,10 +9,15 @@
         <div class="media-body">
         <div class="article-metadata">
             <a class="mr-2" href="#">{{ object.author }}</a>
-            <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+            <small class="text-muted">{{ object.date_entered|date:"F d, Y" }}</small>
         </div>
-        <h2 class="article-title">{{ object.title }}</h2>
-        <p class="article-content">{{ object.content }}</p>
+        <h2 class="article-title"> <strong>{{ object.title }}</strong> </h2>
+        <p class="article-content"><strong>Company Name:</strong> {{ object.company_name }}</p>
+        <p class="article-content"><strong>Bill Amount: </strong>{{ object.amount }}</p>
+        <p class="article-content"><strong> Date entered:</strong> {{ object.date_entered }}</p>
+        <p class="article-content"><strong>Date incurred:</strong> {{ object.statement_date }}</p>
+        <p class="article-content"><strong>Due Date: </strong>{{ object.due_date }}</p>
+        <p class="article-content"><strong>Is it paid?: </strong>{{ object.is_paid }}</p>
         </div>
     </article>
 {% endblock content %}

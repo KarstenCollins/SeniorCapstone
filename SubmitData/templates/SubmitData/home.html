@@ -4,16 +4,18 @@
 <!--Unique content for the home page-->
 <!--Change db fields to be shown here-->
 {% block content %}
+<h1><strong>Expenses Summary</strong></h1>
   {% for post in posts %}
     <article class="media content-section">
       <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
       <div class="media-body">
         <div class="article-metadata">
           <a class="mr-2" href="#">{{ post.author }}</a>
-          <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+          <small class="text-muted">{{ post.date_entered|date:"F d, Y" }}</small>
         </div>
         <h2><a class="article-title" href="{% url 'data-detail' post.id %}">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.content }}</p>
+        <p class="article-content">{{ post.company_name }}</p>
+        <p class="article-content">{{ post.amount }}</p>
       </div>
     </article>
   {% endfor %}
