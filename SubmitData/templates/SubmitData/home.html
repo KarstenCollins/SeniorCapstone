@@ -6,8 +6,9 @@
 {% block content %}
 <h1><strong>Expenses Summary</strong></h1>
   {% for post in posts %}
+  <!--This is where the posts entered are displayed-->
     <article class="media content-section">
-      <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+      <!--<img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">-->
       <div class="media-body">
         <div class="article-metadata">
           <a class="mr-2" href="#">{{ post.author }}</a>

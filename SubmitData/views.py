@@ -23,7 +23,7 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     model = Post 
 
-class PostCreateView(LoginRequiredMixin, CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView): #this is the form for entering a bill
     model = Post
     fields = ['title', 'company_name', 'account_number', 'statement_date', 'due_date', 'amount', 'payment_method', 'is_paid']
 
@@ -33,7 +33,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     
 
 def BillStatement(request):
-    return render(request, 'SubmitData/about.html', {'title':'About'})
+    return render(request, 'SubmitData/billstatement.html', {'title':'About'})
 
 #def income(request):
     #return render(request, 'SubmitData/income.html', {'title':'Income'})
