@@ -23,7 +23,8 @@ class PostListView(ListView):
 class PostDetailView(DetailView):
     model = Post 
 
-class PostCreateView(LoginRequiredMixin, CreateView): #this is the form for entering a bill
+#CreateView handles all sending to db. It takes from the Post model and the fields are what is shown
+class PostCreateView(LoginRequiredMixin, CreateView): #this is the form for entering a bill, Amber's code
     model = Post
     fields = ['title', 'company_name', 'account_number', 'statement_date', 'due_date', 'amount', 'payment_method', 'is_paid']
 
