@@ -5,7 +5,7 @@ from django.urls import reverse
 # Create your models here.
 
 class Bank(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     bank_name = models.CharField(max_length=255)
     nickname = models.CharField(max_length=255, blank=True)
     account_type = models.CharField(max_length=255)
@@ -17,5 +17,5 @@ class Bank(models.Model):
         return self.bank_name
     
     def get_absolute_url(self):
-        return reverse('Bill-Statement')
+        return reverse('view-banks')
         #kwargs={'pk': self.pk}

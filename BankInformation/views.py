@@ -25,8 +25,16 @@ from .models import Bank
 class BankCreateView(LoginRequiredMixin, CreateView):
     model = Bank
     fields = ['bank_name', 'bank_acc_number', 'nickname', 'account_type', 'routing_number', 'notes']
-    #template_name='BankInformation/bankinfo.html'
+    context_object_name = 'banks'
 
     def form_valid(self, form):
-        form.instance.author = self.request.user #sets author to logged in user
+        form.instance.user = self.request.user #sets author to logged in user
         return super().form_valid(form)
+
+class BankListView(LoginRequiredMixin, ListView):
+    model = Bank
+    template_name = 'BankInformation/bank_display.html'
+    context_object_name = 'banks'
+
+    def get_queryset(self): #only show logged in users' data
+        return self.model.objects.all().filter(user=self.request.user)

@@ -19,6 +19,9 @@ class PostListView(LoginRequiredMixin, ListView):
     context_object_name = 'posts' #this is what you want the list to display
     ordering = ['-date_entered']#newest to oldest ordering
 
+    def get_queryset(self):#only show logged in users' data
+        return self.model.objects.all().filter(author=self.request.user)
+
 
 class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post 

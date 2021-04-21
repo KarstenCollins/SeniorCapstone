@@ -32,9 +32,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarToggle">
               <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="{% url 'Submit-Data' %}">Bill Summary</a> <!--Submit-Data-->
-                <a class="nav-item nav-link" href="{% url 'create-data' %}">Enter a Bill</a>
-                <a class="nav-item nav-link" href="{% url 'Bill-Statement' %}">Bill Statement</a>
+                <a class="nav-item nav-link" href="{% url 'Submit-Data' %}">View Your Bills</a> <!--Submit-Data-->
+                <!--<a class="nav-item nav-link" href="{% url 'create-data' %}">Enter a Bill</a>-->
+                <!--<a class="nav-item nav-link" href="{% url 'create-bank' %}">Enter a Bank Account</a>-->
+                <a class="nav-item nav-link" href="{% url 'view-banks' %}">View Your Banks</a>
               </div>
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
@@ -68,11 +69,11 @@
         </div>
         <div class="col-md-4">
         <div class="content-section">
-            <h3>Billing Options</h3>
-            <p class='text-muted'>Access Features of the app here(Placeholder).
+            <h3>Submit Your Info</h3>
+            <p class='text-muted'>Enter Data From The Options Below
             <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Past Bills</li>
-                <li class="list-group-item list-group-item-light">Bills Due in the Future</li>   
+                <a class="list-group-item list-group-item-light" href="{% url 'create-data' %}">Enter A Bill</a>
+                <a class="list-group-item list-group-item-light" href="{% url 'create-bank' %}">Enter A Bank Account</a>   
             </ul>
             </p> 
         </div> 
