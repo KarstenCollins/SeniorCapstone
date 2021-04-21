@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'SubmitData.apps.SubmitdataConfig',
+    'BankInformation.apps.BankinformationConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
     'django.contrib.admin',

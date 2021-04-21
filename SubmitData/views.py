@@ -13,14 +13,14 @@ def home(request):
     return render(request, 'SubmitData/home.html', context)
 
 
-class PostListView(ListView):
+class PostListView(LoginRequiredMixin, ListView):
     model = Post #this is what will be queried from models.py
     template_name = 'SubmitData/home.html' #this changes the default template that django wants
     context_object_name = 'posts' #this is what you want the list to display
     ordering = ['-date_entered']#newest to oldest ordering
 
 
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin, DetailView):
     model = Post 
 
 #CreateView handles all sending to db. It takes from the Post model and the fields are what is shown
