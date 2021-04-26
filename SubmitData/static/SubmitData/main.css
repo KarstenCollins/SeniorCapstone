@@ -13,7 +13,7 @@ body {
   }
   
   .bg-steel {
-    background-color: #5f788a;
+    background-color: #05545a;
   }
   
   .site-header .navbar-nav .nav-link {
@@ -21,7 +21,7 @@ body {
   }
   
   .site-header .navbar-nav .nav-link:hover {
-    color: #2be809;
+    color: #e4e809;
   }
   
   .site-header .navbar-nav .nav-link.active {
@@ -31,7 +31,7 @@ body {
   .content-section {
     background: #ffffff;
     padding: 10px 20px;
-    border: 1px solid #dddddd;
+    border: 1px solid #05545a;
     border-radius: 3px;
     margin-bottom: 20px;
   }
@@ -41,7 +41,7 @@ body {
   }
   
   a.article-title:hover {
-    color: #428bca;
+    color: #e4e809;
     text-decoration: none;
   }
   
@@ -62,7 +62,7 @@ body {
   }
   
   .article-metadata a:hover {
-    color: #333;
+    color: rgb(51, 51, 51);
     text-decoration: none;
   }
   
