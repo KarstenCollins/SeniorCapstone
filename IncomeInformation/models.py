@@ -14,7 +14,5 @@ class Income(models.Model):
         return self.source_name
     
     def get_absolute_url(self):
-        return reverse('view-Income')
-        #kwargs={'pk': self.pk}
+        return reverse('view-Income', kwargs={'pk': self.pk})
 
- #   def = ''

@@ -11,13 +11,13 @@
         <article class="media content-section">
             <!--<img class="rounded-circle article-img" src="{{ income.author.profile.image.url }}">-->
             <div class="media-body">
-            <div class="article-metadata">
-                <!--<a class="mr-2" href="#">{{ incomes.user }}</a>-->
-                <!--<small class="text-muted">{{ incomes.date_entered|date:"F d, Y" }}</small>-->
-            </div>
-            <h2 class="article-title"> <strong>Source Name: </strong> {{ income.source_name}}</h2>
-            <p class="article-content"><strong>Amount:</strong> {{ income.amount}}</p>
-            <p class="article-content"><strong>Date Received: </strong>{{ income.date_received}}</p>
+                <!--<div class="article-metadata">-->
+                    <a class="mr-2" href="#">{{ income.user }}</a>
+                    <!--<small class="text-muted">{{ incomes.date_entered|date:"F d, Y" }}</small>-->
+                <!--</div>-->
+                <h2 class="article-title"> <strong>Source Name: </strong> {{ income.source_name }}</h2>
+                <p class="article-content"><strong>Amount: </strong> {{ income.amount }}</p>
+                <p class="article-content"><strong>Date Received: </strong>{{ income.date_received }}</p>
             </div>
         </article>
     {% endfor %}

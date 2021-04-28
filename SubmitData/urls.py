@@ -24,5 +24,6 @@ urlpatterns = [
     path('BankInfo/', bank_views.BankCreateView.as_view(), name='create-bank'),
                                             #.as_view() if changed to class based
     path('IncomeInfo/', income_views.IncomeCreateView.as_view(), name='create-income'),
+    path('ViewIncome/', income_views.IncomeListView.as_view(), name='view-Income'),
 ]       
 
