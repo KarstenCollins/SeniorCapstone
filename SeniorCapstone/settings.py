@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'BankInformation.apps.BankinformationConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
+    'djmoney',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
