@@ -1,0 +1,24 @@
+<!--everything from the base template-->
+{% extends "SubmitData/base.html"  %}
+
+<!--Unique content for the home page-->
+<!--Change db fields to be shown here-->
+
+{% block content %}
+<h1>Your Income</h1>
+<!--{% csrf_token %}-->
+    {% for incomes in income%}
+        <article class="media content-section">
+            <!--<img class="rounded-circle article-img" src="{{ income.author.profile.image.url }}">-->
+            <div class="media-body">
+                <!--<div class="article-metadata">-->
+                    <a class="mr-2" href="#">{{ incomes.user }}</a>
+                    <!--<small class="text-muted">{{ incomess.date_entered|date:"F d, Y" }}</small>-->
+                <!--</div>-->
+                <h2 class="article-title"> <strong>Source Name: </strong> {{ incomes.source_name }}</h2>
+                <p class="article-content"><strong>Amount: </strong> {{ incomes.amount }}</p>
+                <p class="article-content"><strong>Date Received: </strong>{{ incomes.date_received }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

@@ -34,8 +34,8 @@
               <div class="navbar-nav mr-auto">
                 <a class="nav-item nav-link" href="{% url 'Submit-Data' %}">View Your Bills</a> <!--Submit-Data-->
                 <!--<a class="nav-item nav-link" href="{% url 'create-data' %}">Enter a Bill</a>-->
-                <!--<a class="nav-item nav-link" href="{% url 'create-bank' %}">Enter a Bank Account</a>-->
                 <a class="nav-item nav-link" href="{% url 'view-banks' %}">View Your Banks</a>
+                <a class="nav-item nav-link" href="{% url 'view-Income' %}">View Your Income Sources</a>
               </div>
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
@@ -73,7 +73,8 @@
             <p class='text-muted'>Enter Data From The Options Below
             <ul class="list-group">
                 <a class="list-group-item list-group-item-light" href="{% url 'create-data' %}">Enter A Bill</a>
-                <a class="list-group-item list-group-item-light" href="{% url 'create-bank' %}">Enter A Bank Account</a>   
+                <a class="list-group-item list-group-item-light" href="{% url 'create-bank' %}">Enter A Bank Account</a>
+                <a class="list-group-item list-group-item-light" href="{% url 'create-income' %}">Enter an Income Source</a>   
             </ul>
             </p> 
         </div> 
