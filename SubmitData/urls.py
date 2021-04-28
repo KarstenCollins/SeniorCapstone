@@ -8,6 +8,7 @@ from .views import (
     PostDeleteView
 ) 
 from BankInformation import views as bank_views
+from IncomeInformation import views as income_views
 from . import views
    
 
@@ -22,5 +23,6 @@ urlpatterns = [
     path('ViewBanks/', bank_views.BankListView.as_view(), name='view-banks'),
     path('BankInfo/', bank_views.BankCreateView.as_view(), name='create-bank'),
                                             #.as_view() if changed to class based
+    path('IncomeInfo/', income_views.IncomeCreateView.as_view(), name='create-income'),
 ]       
 

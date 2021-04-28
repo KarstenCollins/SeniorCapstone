@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'SubmitData.apps.SubmitdataConfig',
     'BankInformation.apps.BankinformationConfig',
+    'IncomeInformation.apps.IncomeInformationConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
     'djmoney',
