@@ -1,19 +1,19 @@
 <!--everything from the base template-->
 {% extends "SubmitData/base.html"  %}
+{% load static %}
 
 <!--Unique content for the home page-->
 <!--Change db fields to be shown here-->
 
 {% block content %}
-<h1><strong>Your Bank Accounts</strong></h1>
-<!--{% csrf_token %}-->
+<!--<h1><strong>Your Bank Accounts</strong></h1>
     {% for bank in banks%}
         <article class="media content-section">
-            <!--<img class="rounded-circle article-img" src="{{ banks.author.profile.image.url }}">-->
+            <img class="rounded-circle article-img" src="{{ banks.author.profile.image.url }}">
             <div class="media-body">
             <div class="article-metadata">
-                <!--<a class="mr-2" href="#">{{ banks.user }}</a>-->
-                <!--<small class="text-muted">{{ banks.date_entered|date:"F d, Y" }}</small>-->
+                <<a class="mr-2" href="#">{{ banks.user }}</a>
+                <small class="text-muted">{{ banks.date_entered|date:"F d, Y" }}</small>
             </div>
             <h2 class="article-title"> <strong>{{ bank.bank_name}}</strong> </h2>
             <p class="article-content"><strong>Nickname:</strong> {{ bank.nickname}}</p>
@@ -24,4 +24,28 @@
             </div>
         </article>
     {% endfor %}
+-->
+
+    <div>
+        <table style="width:100%">
+        <tr>
+            <th>Bank Name</th>
+            <th>Nickname</th>
+            <th>Account Type</th>
+            <th>Account Number</th>
+            <th>Routing Number</th>
+            <th>Notes</th>
+        </tr>
+        {% for bank in banks %}
+        <tr>
+            <td><a class="mr-2" href="#">{{ bank.bank_name}}</a></td>
+            <td>{{ bank.nickname}}</td>
+            <td>{{ bank.account_type }}</td>
+            <td>{{ bank.bank_acc_number }}</td>
+            <td>{{ bank.routing_number }}</td>
+            <td>{{ bank.notes }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
 {% endblock content %}

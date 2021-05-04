@@ -9,21 +9,26 @@ from django.views.generic import (
     DeleteView,
     )
 from .models import Post
+from .filters import BillFilter
 
 
 #go into home template when you need to change the fields of the db
 def home(request):
+    myFilter = BillFilter()
+
     context = {
-        'posts': Post.objects.all()
+        'posts': Post.objects.all(),
+        'myFilter': myFilter,
     }
     return render(request, 'SubmitData/home.html', context)
 
 
 class PostListView(LoginRequiredMixin, ListView):
-    model = Post #this is what will be queried from models.py
-    template_name = 'SubmitData/home.html' #this changes the default template that django wants
-    context_object_name = 'posts' #this is what you want the list to display
-    ordering = ['-date_entered']#newest to oldest ordering
+    model = Post 
+    template_name = 'SubmitData/home.html' 
+    context_object_name = 'posts' 
+    ordering = ['-date_entered']
+
 
     def get_queryset(self):#only show logged in users' data
         return self.model.objects.all().filter(author=self.request.user)
@@ -39,7 +44,7 @@ class PostDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
         return False
 
 #CreateView handles all sending to db. It takes from the Post model and the fields are what is shown
-class PostCreateView(LoginRequiredMixin, CreateView): #this is the form for entering a bill, Amber's code
+class PostCreateView(LoginRequiredMixin, CreateView): 
     model = Post
     fields = ['title', 'company_name', 'account_number', 'statement_date', 'due_date', 'amount', 'payment_method', 'is_paid']
 
@@ -47,7 +52,7 @@ class PostCreateView(LoginRequiredMixin, CreateView): #this is the form for ente
         form.instance.author = self.request.user #sets author to logged in user
         return super().form_valid(form)
 
-class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView): #this is the form for entering a bill, Amber's code
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView): 
     model = Post
     fields = ['title', 'company_name', 'account_number', 'statement_date', 'due_date', 'amount', 'payment_method', 'is_paid']
 

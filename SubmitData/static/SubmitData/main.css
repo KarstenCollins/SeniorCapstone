@@ -11,6 +11,10 @@ body {
   ul {
     margin: 0;
   }
+  th, td {
+    padding: 15px;
+    border: 1px solid black;
+  }
   
   .bg-steel {
     background-color: #05545a;
