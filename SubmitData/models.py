@@ -12,11 +12,24 @@ class Post(models.Model):
     account_number = models.CharField(max_length=255, default="")
     statement_date = models.DateField(default=timezone.now)
     due_date = models.DateField(default=datetime.date.today)
+<<<<<<< Updated upstream
     date_entered = models.DateTimeField(default=timezone.now)
     amount = models.CharField(max_length=255, default="")
     is_paid = models.BooleanField(default=0)
+=======
+    date_entered = models.DateField(default=datetime.date.today)
+    amount = MoneyField(max_digits=14, decimal_places=2, default_currency='USD')
+    is_paid = models.BooleanField(default=0, help_text='Everything below is optional')
+>>>>>>> Stashed changes
     payment_method = models.CharField(max_length=50, default="")
     author = models.ForeignKey(User, on_delete=models.CASCADE) #this is where the rel. is. Foreign key is the user
+# NEED Some break here
+    previous_balance = models.IntegerField(blank=True, default='0')
+    payments = models.IntegerField(blank=True, default='0')
+    credits = models.IntegerField(blank=True, default='0')
+    adjustment = models.IntegerField(blank=True, default='0')
+    late_fees = models.IntegerField(blank=True, default='0')
+    interest_charges = models.IntegerField(blank=True, default='0')
 
     def __str__(self):
         return self.title
