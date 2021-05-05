@@ -20,7 +20,6 @@ def home(request):
 
     context = {
         'posts': Post.objects.all(),
-        'myFilter': myFilter,
     }
     return render(request, 'SubmitData/home.html', context)
 
@@ -30,6 +29,11 @@ class PostListView(LoginRequiredMixin, ListView):
     template_name = 'SubmitData/home.html' 
     context_object_name = 'posts' 
     ordering = ['-date_entered']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter'] = BillFilter(self.request.GET, queryset=self.get_queryset())
+        return context
 
 
     def get_queryset(self):#only show logged in users' data
