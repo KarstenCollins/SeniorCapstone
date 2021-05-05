@@ -48,7 +48,7 @@ class PostDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 #CreateView handles all sending to db. It takes from the Post model and the fields are what is shown
 class PostCreateView(LoginRequiredMixin, CreateView): 
     model = Post
-    fields = ['title', 'company_name', 'account_number', 'statement_date', 'due_date', 'amount', 'payment_method', 'is_paid']
+    fields = ['title', 'company_name', 'account_number', 'statement_date', 'due_date', 'amount', 'payment_method', 'is_paid', 'payment_method', 'is_paid', 'previous_balance', 'payments', 'adjustment', 'credit', 'late_fees', 'interest_charges']
 
     def form_valid(self, form):
         form.instance.author = self.request.user #sets author to logged in user
@@ -56,7 +56,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView): 
     model = Post
-    fields = ['title', 'company_name', 'account_number', 'statement_date', 'due_date', 'amount', 'payment_method', 'is_paid']
+    fields = ['title', 'company_name', 'account_number', 'statement_date', 'due_date', 'amount', 'payment_method', 'is_paid', 'payment_method', 'is_paid', 'previous_balance', 'payments', 'adjustment', 'credit', 'late_fees', 'interest_charges']
 
     def form_valid(self, form):
         form.instance.author = self.request.user #sets author to logged in user
