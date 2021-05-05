@@ -1,14 +1,15 @@
 <!--everything from the base template-->
 {% extends "SubmitData/base.html"  %}
+{% load static %}
 
 <!--Unique content for the home page-->
 <!--Change db fields to be shown here-->
-{% block content %}
+
+
+<!--
 <h1><strong>Expenses Summary</strong></h1>
   {% for post in posts %}
-  <!--This is where the posts entered are displayed-->
     <article class="media content-section">
-      <!--<img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">-->
       <div class="media-body">
         <div class="article-metadata">
           <a class="mr-2" href="#">{{ post.author }}</a>
@@ -20,21 +21,41 @@
       </div>
     </article>
   {% endfor %}
+-->
+
+{% block content %}
+
+<!--<div>
+  <form method="get">
+    {{ myFilter.form }}
+
+  <button class ="btn btn-primary" type="submit">Search</button>
+
+  </form>
+</div>-->
+<div>
+  <h1>Your entered bills</h1>
+  <h4><a class="nav-item nav-link" href="{% url 'is-paid' %}">View Your Unpaid Bills</a></h4>
+  <table style="width:100%">
+    <tr>
+      <th>Title</th>
+      <th>Date Entered</th>
+      <th>Company Name</th>
+      <th>Amount</th>
+      <th>Payment Method</th>
+      <th>Is it paid?</th>
+    </tr>
+    {% for post in posts %}
+      <tr>
+        <td><a class="mr-2" href="{% url 'data-detail' post.id %}">{{ post.title }}</a></td>
+        <td>{{ post.date_entered|date:"F d, Y" }}</td>
+        <td>{{ post.company_name }}</td>
+        <td>{{ post.amount }}</td>
+        <td>{{ post.payment_method }}</td>
+        <td>{{ post.is_paid }}</td>
+      </tr>
+    {% endfor %}
+    </table>
+</div>
 {% endblock content %}
 
-
-
-  <!--{% for post in posts %}
-    <article class="media content-section">
-      <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
-        <div class="media-body">
-          <div class="article-metadata">
-            <a class="mr-2" href="#">{{ post.author }}</a>
-            <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
-          </div>
-          <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-          <p class="article-content">{{ post.content }}</p>
-        </div>
-      </article>
-    {% endfor %}-->
-  

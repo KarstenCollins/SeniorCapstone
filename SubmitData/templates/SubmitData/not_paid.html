@@ -1,0 +1,31 @@
+<!--everything from the base template-->
+{% extends "SubmitData/base.html"  %}
+{% load static %}
+
+
+{% block content %}
+
+<h1>These Bills have not been paid!</h1>
+<div>
+  <table style="width:100%">
+    <tr>
+      <th>Title</th>
+      <th>Date Entered</th>
+      <th>Company Name</th>
+      <th>Amount</th>
+      <th>Payment Method</th>
+      <th>Is it paid?</th>
+    </tr>
+    {% for post in posts %}
+      <tr>
+        <td><a class="mr-2" href="{% url 'data-detail' post.id %}">{{ post.title }}</a></td>
+        <td>{{ post.date_entered|date:"F d, Y" }}</td>
+        <td>{{ post.company_name }}</td>
+        <td>{{ post.amount }}</td>
+        <td>{{ post.payment_method }}</td>
+        <td>{{ post.is_paid }}</td>
+      </tr>
+    {% endfor %}
+    </table>
+</div>
+{% endblock content %}

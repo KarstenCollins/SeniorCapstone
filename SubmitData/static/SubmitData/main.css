@@ -6,10 +6,15 @@ body {
   
   h1, h2, h3, h4, h5, h6 {
     color: #444444;
+    text-align: center;
   }
   
   ul {
     margin: 0;
+  }
+  th, td {
+    padding: 15px;
+    border: 1px solid black;
   }
   
   .bg-steel {
