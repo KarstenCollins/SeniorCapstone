@@ -43,6 +43,7 @@
       <th>Company Name</th>
       <th>Amount</th>
       <th>Payment Method</th>
+      <th>Due Date</th>
       <th>Is it paid?</th>
     </tr>
     {% for post in posts %}
@@ -52,6 +53,7 @@
         <td>{{ post.company_name }}</td>
         <td>{{ post.amount }}</td>
         <td>{{ post.payment_method }}</td>
+        <td>{{ post.due_date }}</td>
         <td>{{ post.is_paid }}</td>
       </tr>
     {% endfor %}

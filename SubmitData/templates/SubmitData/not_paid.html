@@ -5,7 +5,18 @@
 
 {% block content %}
 
-<h1>These Bills have not been paid!</h1>
+
+<h3>These Bills are:<br>Not paid AND due in the future <br> Or <br> Not Paid at all </h3>
+
+<body>
+  <p>Today's Date Is: <span id="datetime"></span></p>
+
+  <script>
+    var dt = new Date();
+    document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+  </script>
+</body>
+
 <div>
   <table style="width:100%">
     <tr>
@@ -14,6 +25,7 @@
       <th>Company Name</th>
       <th>Amount</th>
       <th>Payment Method</th>
+      <th>Due Date</th>
       <th>Is it paid?</th>
     </tr>
     {% for post in posts %}
@@ -23,9 +35,11 @@
         <td>{{ post.company_name }}</td>
         <td>{{ post.amount }}</td>
         <td>{{ post.payment_method }}</td>
+        <td>{{ post.due_date }}</td>
         <td>{{ post.is_paid }}</td>
       </tr>
     {% endfor %}
     </table>
 </div>
 {% endblock content %}
+
