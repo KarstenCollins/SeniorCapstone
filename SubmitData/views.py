@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponse
 from django.views.generic import (
@@ -31,6 +32,7 @@ class PostListView(LoginRequiredMixin, ListView):
 
 
     def get_queryset(self):#only show logged in users' data
+        #return self.model.objects.all().filter(author=self.request.user, is_paid=True)
         return self.model.objects.all().filter(author=self.request.user)
 
 
@@ -76,7 +78,17 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
-    
+
+
+class IsPaidView(LoginRequiredMixin, ListView):
+    model = Post 
+    template_name = 'SubmitData/not_paid.html' 
+    context_object_name = 'posts' 
+    ordering = ['-date_entered']
+
+
+    def get_queryset(self):#only show logged in users' data
+        return self.model.objects.all().filter(author=self.request.user, is_paid=False)
 
 def BillStatement(request):
     return render(request, 'SubmitData/billstatement.html', {'title':'About'})
