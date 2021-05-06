@@ -28,7 +28,7 @@ class PostListView(LoginRequiredMixin, ListView):
     model = Post 
     template_name = 'SubmitData/home.html' 
     context_object_name = 'posts' 
-    ordering = ['-date_entered']
+    #ordering = ['-date_entered']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -38,7 +38,7 @@ class PostListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):#only show logged in users' data
         #return self.model.objects.all().filter(author=self.request.user, is_paid=True)
-        return self.model.objects.all().filter(author=self.request.user)
+        return self.model.objects.all().filter(author=self.request.user).order_by('-date_entered')
 
 
 class PostDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):

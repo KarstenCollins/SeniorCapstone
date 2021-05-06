@@ -25,6 +25,7 @@ class Post(models.Model):
     late_fees = models.IntegerField(blank=True, default='0')
     interest_charges = models.IntegerField(blank=True, default='0')
 
+
     def __str__(self):
         return self.title
 
