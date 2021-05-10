@@ -1,0 +1,53 @@
+{% extends "SubmitData/base.html"  %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+
+<h3>Create Summaries Here <br> <!--Or <br> Not Paid at all--> </h3>
+
+<h4>
+  <p><small>Today's Date Is: <span id="datetime"></span></small></p>
+
+  <script>
+    var dt = new Date();
+    document.getElementById("datetime").innerHTML = dt.toLocaleDateString();
+  </script>
+</h4>
+
+<p><strong>The date format must be in DD/MM/YYYY format</strong></p>
+
+<div>
+    <form method="GET">
+        {{ summary.form|crispy}}<br>
+        <button type="submit" class="btn btn-primary">Search</button> 
+      </form><br>
+
+  <table style="width:100%">
+    <tr>
+      <th>Title</th>
+      <th>Date Entered</th>
+      <th>Company Name</th>
+      <th>Amount</th>
+      <th>Payment Method</th>
+      <th>Due Date</th>
+      <th>Is it paid?</th>
+    </tr>
+    {% for post in summary.qs %}
+      <tr>
+        <td><a class="mr-2" href="{% url 'data-detail' post.id %}">{{ post.title }}</a></td>
+        <td>{{ post.date_entered|date:"F d, Y" }}</td>
+        <td>{{ post.company_name }}</td>
+        <td>{{ post.amount }}</td>
+        <td>{{ post.payment_method }}</td>
+        <td>{{ post.due_date }}</td>
+        <td>{{ post.is_paid }}</td>
+      </tr>
+    {% endfor %}
+    </table>
+</div>
+
+<h6><a href="{% url 'Submit-Data' %}">Return To Your Entered Bills</a></h6>
+{% endblock content %}

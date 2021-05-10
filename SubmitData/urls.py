@@ -26,5 +26,6 @@ urlpatterns = [
     path('IncomeInfo/', income_views.IncomeCreateView.as_view(), name='create-income'),
     path('ViewIncome/', income_views.IncomeListView.as_view(), name='view-Income'),
     path('BillsNotPaid/', data_views.IsPaidView.as_view(), name='is-paid'),
+    path('Summaries/', data_views.YearlyMonthlySummaryView.as_view(), name='view-summaries'),
 ]     
 

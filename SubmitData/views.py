@@ -11,7 +11,7 @@ from django.views.generic import (
     DeleteView,
     )
 from .models import Post
-from .filters import BillFilter
+from .filters import BillFilter, SummariesFilter
 
 
 #go into home template when you need to change the fields of the db
@@ -95,6 +95,18 @@ class IsPaidView(LoginRequiredMixin, ListView):
     def get_queryset(self):#only show logged in users' data
         #return self.model.objects.all().filter(Q(author=self.request.user, due_date__gte=datetime.date.today(), is_paid=False) | Q(author=self.request.user, is_paid=False)) #is_paid=False,
         return self.model.objects.all().filter(Q(author=self.request.user, due_date__gte=datetime.date.today(), is_paid=False)) #| Q(author=self.request.user, is_paid=False))
+
+
+class YearlyMonthlySummaryView(LoginRequiredMixin, ListView):
+    model = Post
+    template_name = 'SubmitData/summaries.html'
+    context_object_name = 'posts'
+    ordering = ['-due_date']
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['summary'] = SummariesFilter(self.request.GET, queryset=self.get_queryset())
+        return context
 
 def BillStatement(request):
     return render(request, 'SubmitData/billstatement.html', {'title':'About'})
