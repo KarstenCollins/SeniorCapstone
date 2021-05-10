@@ -6,7 +6,7 @@
 {% block content %}
 
 
-<h3>These Bills are:<br>Not paid AND due in the future <br> Or <br> Not Paid at all </h3>
+<h3>These Bills are:<br>Not paid AND due in the future <br> <!--Or <br> Not Paid at all--> </h3>
 
 <body>
   <p>Today's Date Is: <span id="datetime"></span></p>
@@ -41,5 +41,7 @@
     {% endfor %}
     </table>
 </div>
+
+<h6><a href="{% url 'Submit-Data' %}">Return To Your Entered Bills</a></h6>
 {% endblock content %}
 

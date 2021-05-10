@@ -93,7 +93,8 @@ class IsPaidView(LoginRequiredMixin, ListView):
 
 
     def get_queryset(self):#only show logged in users' data
-        return self.model.objects.all().filter(Q(author=self.request.user, due_date__gte=datetime.date.today(), is_paid=False) | Q(author=self.request.user, is_paid=False)) #is_paid=False,
+        #return self.model.objects.all().filter(Q(author=self.request.user, due_date__gte=datetime.date.today(), is_paid=False) | Q(author=self.request.user, is_paid=False)) #is_paid=False,
+        return self.model.objects.all().filter(Q(author=self.request.user, due_date__gte=datetime.date.today(), is_paid=False)) #| Q(author=self.request.user, is_paid=False))
 
 def BillStatement(request):
     return render(request, 'SubmitData/billstatement.html', {'title':'About'})
