@@ -10,6 +10,7 @@
 
 <h4>
   <p><small>Today's Date Is: <span id="datetime"></span></small></p>
+  <h6><a href="{% url 'Submit-Data' %}">Return To Your Entered Bills</a></h6><br>
 
   <script>
     var dt = new Date();
@@ -17,7 +18,7 @@
   </script>
 </h4>
 
-<p><strong>The date format must be in DD/MM/YYYY format</strong></p>
+<p><strong>The date format must be in DD/MM/YYYY</strong></p>
 
 <div>
     <form method="GET">
@@ -46,8 +47,8 @@
         <td>{{ post.is_paid }}</td>
       </tr>
     {% endfor %}
-    </table>
+    </table><br>
 </div>
 
-<h6><a href="{% url 'Submit-Data' %}">Return To Your Entered Bills</a></h6>
+<!--<h6><a href="{% url 'Submit-Data' %}">Return To Your Entered Bills</a></h6>-->
 {% endblock content %}

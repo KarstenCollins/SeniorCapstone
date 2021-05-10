@@ -3,26 +3,6 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
-<!--Unique content for the home page-->
-<!--Change db fields to be shown here-->
-
-
-<!--
-<h1><strong>Expenses Summary</strong></h1>
-  {% for post in posts %}
-    <article class="media content-section">
-      <div class="media-body">
-        <div class="article-metadata">
-          <a class="mr-2" href="#">{{ post.author }}</a>
-          <small class="text-muted">{{ post.date_entered|date:"F d, Y" }}</small>
-        </div>
-        <h2><a class="article-title" href="{% url 'data-detail' post.id %}">{{ post.title }}</a></h2>
-        <p class="article-content">{{ post.company_name }}</p>
-        <p class="article-content">{{ post.amount }}</p>
-      </div>
-    </article>
-  {% endfor %}
--->
 
 {% block content %}
 
@@ -32,6 +12,7 @@
 
   <h1>Your Entered Bills</h1>
     <h4><a class="nav-item nav-link" href="{% url 'is-paid' %}">View Your Unpaid Bills</a></h4>
+    <h5><a class="nav-item nav-link" href="{% url 'view-summaries' %}">Create Monthly Summaries</a></h5>
   
     <form method="GET">
       {{ filter.form|crispy}}<br>
