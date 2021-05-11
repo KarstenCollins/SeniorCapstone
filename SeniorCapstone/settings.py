@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'crispy_forms',
     'djmoney',
+    'cal.apps.CalConfig',
     'django_filters', 
     'django.contrib.admin',
     'django.contrib.auth',

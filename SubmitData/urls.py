@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import include, path
 from .views import (
     PostListView, 
     PostDetailView,
@@ -10,7 +10,7 @@ from .views import (
 from BankInformation import views as bank_views
 from IncomeInformation import views as income_views
 from . import views as data_views
-   
+from cal import views as cal_views  
 
 urlpatterns = [
     path('', PostListView.as_view(), name='Submit-Data'),  #Submit-Data is original
@@ -27,5 +27,9 @@ urlpatterns = [
     path('ViewIncome/', income_views.IncomeListView.as_view(), name='view-Income'),
     path('BillsNotPaid/', data_views.IsPaidView.as_view(), name='is-paid'),
     path('Summaries/', data_views.YearlyMonthlySummaryView.as_view(), name='view-summaries'),
+    path(r'index/', cal_views.index, name='index'),
+    path(r'calendar/', cal_views.CalendarView.as_view(), name='calendar'),
+    path(r'event/new/', cal_views.event, name='event_new'),
+	path(r'event/edit/(<event_id>\d+)/', cal_views.event, name='event_edit'),
 ]     
 
