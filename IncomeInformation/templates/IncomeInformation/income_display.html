@@ -9,9 +9,10 @@
 {% block content %}
 
 
-    <h1>Your Income Sources</h1>
+    <h1>Your Income Sources</h1><br>
     <div>
         <form method="GET">
+            <p><strong>The date format must be in YYYY/MM/DD</strong></p>
             {{ incomefilter.form|crispy}}<br>
             <button type="submit" class="btn btn-primary">Search</button> 
           </form><br>
