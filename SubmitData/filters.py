@@ -10,7 +10,9 @@ class BillFilter(django_filters.FilterSet):
     class Meta:
         model = Post
         fields = {
+            'title': ['icontains'],
             'company_name': ['icontains'],
+            'payment_method': ['icontains'],
         }
 
 class SummariesFilter(django_filters.FilterSet):
