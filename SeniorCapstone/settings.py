@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'verify_email.apps.VerifyEmailConfig',
     'SubmitData.apps.SubmitdataConfig',
     'BankInformation.apps.BankinformationConfig',
     'IncomeInformation.apps.IncomeInformationConfig',
@@ -137,3 +138,13 @@ CRIPSY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'Submit-Data'
 #takes user to login page when trying to do something that requires to be logged in
 LOGIN_URL = 'login'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_ID') 
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PW')
+
+DEFAULT_FROM_EMAIL = 'noreply<no_reply@domain.com>'
