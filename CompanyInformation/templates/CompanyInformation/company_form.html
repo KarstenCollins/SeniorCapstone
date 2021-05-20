@@ -1,0 +1,20 @@
+<!--everything from the base template-->
+{% extends "SubmitData/base.html"  %}
+{% load crispy_forms_tags %}
+
+<!--Unique content for the register page-->
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Submit Company Info Here</legend>
+                <!--Displays form as crispy style-->
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Submit Your Company</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
