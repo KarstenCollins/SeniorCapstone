@@ -5,8 +5,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponse
 from django.views.generic import (
     ListView,
-    DetailView, 
-    CreateView, 
+    DetailView,
+    CreateView,
     UpdateView,
     DeleteView,
     )
@@ -25,9 +25,9 @@ def home(request):
 
 
 class PostListView(LoginRequiredMixin, ListView):
-    model = Post 
-    template_name = 'SubmitData/home.html' 
-    context_object_name = 'posts' 
+    model = Post
+    template_name = 'SubmitData/home.html'
+    context_object_name = 'posts'
     #ordering = ['-date_entered']
 
     def get_context_data(self, **kwargs):
@@ -42,7 +42,7 @@ class PostListView(LoginRequiredMixin, ListView):
 
 
 class PostDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
-    model = Post 
+    model = Post
 
     def test_func(self):
         post = self.get_object()
@@ -51,17 +51,17 @@ class PostDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
         return False
 
 #CreateView handles all sending to db. It takes from the Post model and the fields are what is shown
-class PostCreateView(LoginRequiredMixin, CreateView): 
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'company_name', 'account_number', 'statement_date', 'due_date', 'amount', 'payment_method', 'is_paid', 'payment_method', 'is_paid', 'previous_balance', 'payments', 'adjustment', 'credit', 'late_fees', 'interest_charges']
+    fields = ['title', 'company_name', 'account_number', 'statement_date', 'due_date', 'amount', 'payment_method', 'is_paid', 'payment_method', 'is_paid', 'previous_balance', 'minimum_payment', 'payments', 'adjustment', 'credit', 'late_fees', 'interest_charges']
 
     def form_valid(self, form):
         form.instance.author = self.request.user #sets author to logged in user
         return super().form_valid(form)
 
-class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView): 
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'company_name', 'account_number', 'statement_date', 'due_date', 'amount', 'payment_method', 'is_paid', 'payment_method', 'is_paid', 'previous_balance', 'payments', 'adjustment', 'credit', 'late_fees', 'interest_charges']
+    fields = ['title', 'company_name', 'account_number', 'statement_date', 'due_date', 'amount', 'payment_method', 'is_paid', 'payment_method', 'is_paid', 'previous_balance','minimum_payment', 'payments', 'adjustment', 'credit', 'late_fees', 'interest_charges']
 
     def form_valid(self, form):
         form.instance.author = self.request.user #sets author to logged in user
@@ -86,9 +86,9 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 class IsPaidView(LoginRequiredMixin, ListView):
-    model = Post 
-    template_name = 'SubmitData/not_paid.html' 
-    context_object_name = 'posts' 
+    model = Post
+    template_name = 'SubmitData/not_paid.html'
+    context_object_name = 'posts'
     ordering = ['-date_entered']
 
 
@@ -102,7 +102,7 @@ class YearlyMonthlySummaryView(LoginRequiredMixin, ListView):
     template_name = 'SubmitData/summaries.html'
     context_object_name = 'posts'
     ordering = ['-due_date']
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['summary'] = SummariesFilter(self.request.GET, queryset=self.get_queryset())
@@ -110,6 +110,3 @@ class YearlyMonthlySummaryView(LoginRequiredMixin, ListView):
 
 def BillStatement(request):
     return render(request, 'SubmitData/billstatement.html', {'title':'About'})
-
-
-

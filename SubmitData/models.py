@@ -19,6 +19,7 @@ class Post(models.Model):
     payment_method = models.CharField(max_length=50, default="")
     author = models.ForeignKey(User, on_delete=models.CASCADE) #this is where the rel. is. Foreign key is the user
     previous_balance = models.IntegerField(blank=True, default='0')
+    minimum_payment = models.IntegerField(blank=True, default='0')
     payments = models.IntegerField(blank=True, default='0')
     credit = models.IntegerField(blank=True, default='0')
     adjustment = models.IntegerField(blank=True, default='0')
