@@ -13,6 +13,8 @@ class BillFilter(django_filters.FilterSet):
             'title': ['icontains'],
             'company_name': ['icontains'],
             'payment_method': ['icontains'],
+            'date_entered' : ['icontains'],
+            'account_number' : ['icontains']
         }
 
 class SummariesFilter(django_filters.FilterSet):
