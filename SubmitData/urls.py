@@ -9,6 +9,7 @@ from .views import (
 )
 from BankInformation import views as bank_views
 from IncomeInformation import views as income_views
+from CompanyInformation import views as company_views
 from . import views as data_views
 from cal import views as cal_views
 
@@ -25,6 +26,8 @@ urlpatterns = [
                                             #.as_view() if changed to class based
     path('IncomeInfo/', income_views.IncomeCreateView.as_view(), name='create-income'),
     path('ViewIncome/', income_views.IncomeListView.as_view(), name='view-Income'),
+    path('CompanyInfo/', company_views.CompanyCreateView.as_view(), name='create-company'),
+    path('CompanyIncome/', company_views.CompanyListView.as_view(), name='view-company'),
     path('BillsNotPaid/', data_views.IsPaidView.as_view(), name='is-paid'),
     path('Summaries/', data_views.YearlyMonthlySummaryView.as_view(), name='view-summaries'),
     path(r'index/', cal_views.index, name='index'),
