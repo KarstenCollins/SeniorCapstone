@@ -25,8 +25,8 @@
         </article>
     {% endfor %}
 -->
-
-<h1>Your Banks</h1>
+<br>
+<h1>Your Banks</h1><br>
     <div>
         <table style="width:100%">
         <tr>
@@ -39,7 +39,7 @@
         </tr>
         {% for bank in banks %}
         <tr>
-            <td><a class="mr-2" href="#">{{ bank.bank_name}}</a></td>
+            <td><a class="mr-2" href="{% url 'bank-detail' bank.id %}">{{ bank.bank_name}}</a></td>
             <td>{{ bank.nickname}}</td>
             <td>{{ bank.account_type }}</td>
             <td>{{ bank.bank_acc_number }}</td>

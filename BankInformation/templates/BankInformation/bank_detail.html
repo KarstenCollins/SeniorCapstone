@@ -1,0 +1,31 @@
+<!--everything from the base template-->
+{% extends "SubmitData/base.html"  %}
+
+<!--Unique content for the home page-->
+<!--Change db fields to be shown here-->
+
+{% block content %}
+<br>
+    <article class="media content-section">
+        <!--<img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">-->
+        <div class="media-body">
+        <div class="article-metadata">
+            <!--<a class="mr-2" href="#">{{ object.author }}</a>-->
+            <!--<small class="text-muted">{{ object.date_entered|date:"F d, Y" }}</small>-->
+            {% if object.user == user %}
+            <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'update-bank' object.id %}">Update This Bank</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'delete-bank' object.id %}">Delete This Bank</a>
+            {% endif%}
+            </div>
+        </div>
+        <h2 class="article-title"> <strong>{{ object.bank_name }}</strong> </h2>
+        <p class="article-content"><strong>Nickname:</strong> {{ object.nickname }}</p>
+        <p class="article-content"><strong>Account Type:</strong> {{ object.account_type }}</p>
+        <p class="article-content"><strong>Account Number</strong> {{ object.bank_acc_number }}</p>
+        <p class="article-content"><strong>Routing Number</strong> {{ object.routing_number }}</p>
+        <p class="article-content"><strong>Notes:</strong> {{ object.notes }}</p>
+        
+        </div>
+    </article>
+{% endblock content %}
