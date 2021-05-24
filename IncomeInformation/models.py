@@ -8,16 +8,13 @@ import datetime
 
 class Income(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="")
-    source_name = models.CharField( max_length=100)
+    source_name = models.CharField(max_length=255)
     amount = MoneyField(max_digits=14, decimal_places=2, default_currency='USD')
     date_received = models.DateField(default=datetime.date.today)
 
-
     def __str__(self):
         return self.source_name
-    
-    def get_absolute_url(self):
-        return reverse('view-Income')
-    
-    #kwargs={'pk': self.pk}
 
+    def get_absolute_url(self):
+        return reverse('view-incomes')
+        #kwargs={'pk': self.pk}

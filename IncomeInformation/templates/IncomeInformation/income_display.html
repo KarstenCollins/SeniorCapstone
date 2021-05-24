@@ -7,29 +7,27 @@
 <!--Change db fields to be shown here-->
 
 {% block content %}
-
-
-    <h1>Your Income Sources</h1><br>
+<br>
+<h1>Your Income</h1><br>
     <div>
-        <form method="GET">
-            <p><strong>The date format must be in YYYY/MM/DD</strong></p>
-            {{ incomefilter.form|crispy}}<br>
-            <button type="submit" class="btn btn-primary">Search</button> 
-          </form><br>
-        <table style="width:100%">
+      <form method="GET">
+         <p><strong>The date format must be in YYYY/MM/DD</strong></p>
+         {{ incomefilter.form|crispy}}<br>
+         <button type="submit" class="btn btn-primary">Search</button>
+       </form><br>
+     <table style="width:100%">
         <tr>
             <th>Source</th>
             <th>Amount</th>
             <th>Date Received</th>
         </tr>
-        {% for incomes in incomefilter.qs %}
+        {% for income in incomes %}
         <tr>
-            <td><a class="mr-2" href="#">{{ incomes.source_name }}</a></td>
-            <td>{{ incomes.amount }}</td>
-            <td>{{ incomes.date_received }}</td>
+            <td><a class="mr-2" href="{% url 'income-detail' income.id %}">{{ income.source_name}}</a></td>
+            <td>{{ income.amount}}</td>
+            <td>{{ income.date_received }}</td>
         </tr>
         {% endfor %}
         </table>
     </div>
-
 {% endblock content %}
