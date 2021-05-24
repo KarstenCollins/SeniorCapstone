@@ -8,20 +8,6 @@ from .models import Bank
 
 
 
-
-#def BankCreateView(request):
-    #if request.method == 'Post':
-        #form = BankCreateForm(request.POST)
-        #if form.is_valid():
-       #     form.save()
-      #      messages.success(request, f'Your bank has been submitted!')
-     #       return redirect('BankInfo/')
-    #else:
-     #   form = BankCreateForm()
-    #return render(request, 'BankInformation/bank_form.html', {'form' : form})
-
-
-
 class BankCreateView(LoginRequiredMixin, CreateView):
     model = Bank
     fields = ['bank_name', 'bank_acc_number', 'nickname', 'account_type', 'routing_number', 'notes']
@@ -54,7 +40,7 @@ class BankUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return True
         return False
 
-
+#
 class BankDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Bank
     success_url = '/ViewBanks' #home page redirect when finished

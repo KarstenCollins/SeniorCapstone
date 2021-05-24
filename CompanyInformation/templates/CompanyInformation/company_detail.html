@@ -1,0 +1,32 @@
+<!--everything from the base template-->
+{% extends "SubmitData/base.html"  %}
+
+<!--Unique content for the home page-->
+<!--Change db fields to be shown here-->
+
+{% block content %}
+<br>
+    <article class="media content-section">
+        <!--<img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">-->
+        <div class="media-body">
+        <div class="article-metadata">
+            <!--<a class="mr-2" href="#">{{ object.author }}</a>-->
+            <!--<small class="text-muted">{{ object.date_entered|date:"F d, Y" }}</small>-->
+            {% if object.user == user %}
+            <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'update-company' object.id %}">Update This Company</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'delete-company' object.id %}">Delete This Company</a>
+            {% endif%}
+            </div>
+        </div>
+        <h2 class="article-title"> <strong>{{ object.company_name }}</strong> </h2>
+        <p class="article-content"><strong>Nickname:</strong> {{ object.phone_number }}</p>
+        <p class="article-content"><strong>Account Type:</strong> {{ object.address}}</p>
+        <p class="article-content"><strong>Account Number</strong> {{ object.city }}</p>
+        <p class="article-content"><strong>Routing Number</strong> {{ object.state }}</p>
+        <p class="article-content"><strong>Notes:</strong> {{ object.zip}}</p>
+        <p class="article-content"><strong>Notes:</strong> {{ object.website}}</p>
+
+        </div>
+    </article>
+{% endblock content %}

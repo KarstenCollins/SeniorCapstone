@@ -1,44 +1,35 @@
 <!--everything from the base template-->
 {% extends "SubmitData/base.html"  %}
 {% load static %}
-{% load crispy_forms_tags %}
 
 <!--Unique content for the home page-->
 <!--Change db fields to be shown here-->
 
 {% block content %}
-
-
-    <h1>Your Company Sources</h1><br>
+<br>
+<h1>Your Company</h1><br>
     <div>
-        <form method="GET">
-            <p><strong>The date format must be in YYYY/MM/DD</strong></p>
-            {{ companyfilter.form|crispy}}<br>
-            <button type="submit" class="btn btn-primary">Search</button>
-          </form><br>
         <table style="width:100%">
         <tr>
-            <th>Source</th>
             <th>Company Name</th>
             <th>Phone Number</th>
             <th>Address</th>
             <th>City</th>
             <th>State</th>
+            <th>Zip</th>
             <th>Website</th>
         </tr>
-        {% for companys in companyfilter.qs %}
+        {% for company in companys %}
         <tr>
-            <td><a class="mr-2" href="#">{{ companys.source_name }}</a></td>
-            <td>{{ companys.company_name }}</td>
-            <td>{{ companys.phone_number }}</td>
-            <td>{{ companys.adress }}</td>
-            <td>{{ companys.city }}</td>
-            <td>{{ companys.state }}</td>
-            <td>{{ companys.zip }}</td>
-            <td>{{ companys.website }}</td>
+            <td><a class="mr-2" href="{% url 'company-detail' company.id %}">{{ company.company_name}}</a></td>
+            <td>{{ company.phone_number}}</td>
+            <td>{{ company.address }}</td>
+            <td>{{ company.city }}</td>
+            <td>{{ company.state }}</td>
+            <td>{{ company.zip }}</td>
+            <td>{{ company.website }}</td>
         </tr>
         {% endfor %}
         </table>
     </div>
-
 {% endblock content %}
