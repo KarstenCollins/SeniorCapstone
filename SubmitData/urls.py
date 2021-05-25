@@ -41,5 +41,7 @@ urlpatterns = [
     path(r'calendar/', cal_views.CalendarView.as_view(), name='calendar'),
     path(r'event/new/', cal_views.event, name='event_new'),
 	path(r'event/edit/(<event_id>\d+)/', cal_views.event, name='event_edit'),
-    path('event/<int:pk>/remove', cal_views.EventDeleteView.as_view(), name='remove_event'),
+    #path('event/<int:pk>/remove', cal_views.EventDeleteView.as_view(), name='remove_event'),
+    path(r'listcalendar/', cal_views.event_list_view, name='list-calendar'),
+    path(r'event/delete/<id>', cal_views.event_delete_view, name='event-delete'),
 ]

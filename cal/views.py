@@ -66,7 +66,20 @@ def event(request, event_id=None):
         #return HttpResponseRedirect(reverse('cal:calendar'))
     #return render(request, 'cal/delete.html', {'form': form})
 
-class EventDeleteView(DeleteView):
-    model = Event
-    template_name = 'cal/delete.html'
-    success_url = reverse_lazy('cal/event.html')
+def event_list_view(request):
+    context={}
+    context["dataset"] = Event.objects.all()
+
+    return render(request, "cal/list_view.html", context)
+
+def event_delete_view(request, id):
+    context={}
+
+    obj=get_object_or_404(Event, id=id)
+
+    if request.method=="POST":
+        obj.delete()
+        return HttpResponseRedirect("/calendar")
+    
+    return render(request, "cal/delete_view.html", context)
+    

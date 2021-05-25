@@ -1,0 +1,15 @@
+
+
+<div class="main">
+    {% for data in dataset %}
+
+    <h3>Title: {{data.title}}</h3>
+    <h3>Description: {{data.description}}</h3>
+    <h3>Start time: {{data.start_time}}</h3>
+    <h3>End time: {{data.end_time}}</h3>
+    <h3><a href="{% url 'event-delete' data.id %}">Delete this event</a></h3>
+    <hr/>
+
+    {% endfor %}
+
+</div>
