@@ -21,6 +21,7 @@ class SummariesFilter(django_filters.FilterSet):
     start_date = django_filters.DateFilter(field_name="due_date", lookup_expr='gte')
     end_date = DateFilter(field_name="due_date", lookup_expr='lte')
     #due_date = DateRangeFilter(widget=django_filters.widgets.RangeWidget(attrs={'type':'datetime-local'}))
+    date_between = django_filters.DateFromToRangeFilter(label='Date range is in between')
     class Meta:
         model = Post
         fields = ['due_date']
