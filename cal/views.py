@@ -1,18 +1,16 @@
 from datetime import datetime, timedelta, date
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.views.generic import DeleteView, ListView
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.safestring import mark_safe
 import calendar
-from django.urls import reverse_lazy
 
 from .models import *
 from .utils import Calendar
-from .forms import EventForm
-
-def index(request):
-    return HttpResponse('hello')
+from .forms import EventForm, DeleteForm
+#def index(request):
+    #return HttpResponse('hello')
 
 class CalendarView(ListView):
     model = Event
@@ -60,13 +58,20 @@ def event(request, event_id=None):
         return HttpResponseRedirect(reverse('cal:calendar'))
     return render(request, 'cal/event.html', {'form': form})
 
-    #form = EventForm(request.POST or None)
-    #if request.POST and form.is_valid():
-        #form.save()
-        #return HttpResponseRedirect(reverse('cal:calendar'))
+def delete_event(request, instance):
+    #instance = Event()
+    #if event_id:
+        #form = EventForm(request.GET, instance=Event.objects.get(pk=instance))
+        #if request.GET and form.is_valid():
+            #form.delete()
+        #return HttpResponseRedirect(reverse_lazy('cal:calendar'))
     #return render(request, 'cal/delete.html', {'form': form})
-
-class EventDeleteView(DeleteView):
-    model = Event
-    template_name = 'cal/delete.html'
-    success_url = reverse_lazy('cal/event.html')
+    if event_id:
+        form = EventForm(request.GET, instance=Event.objects.get(pk=instance))
+        if form.is_valid():
+            form.delete()
+            return HttpResponse(reverse('cal:calendar')) # wherever to go after deleting
+        else:
+            form = DeleteForm(instance=Event.objects.get(pk=instance))
+            form.delete()
+            return render(request, 'cal/delete.html', {'form': form})
