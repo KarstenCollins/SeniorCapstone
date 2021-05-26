@@ -4,15 +4,17 @@ from .forms import IncomeCreateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib import messages
+
 from .models import Income
 from .filters import IncomeFilter
-
+from .forms import IncomeForm
 
 
 
 class IncomeCreateView(LoginRequiredMixin, CreateView):
     model = Income
-    fields = ['source_name', 'amount', 'date_received']
+    #fields = ['source_name', 'amount', 'date_received']
+    form_class = IncomeForm
     context_object_name = 'income'
 
     def form_valid(self, form):
