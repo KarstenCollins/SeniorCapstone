@@ -83,3 +83,6 @@ def event_delete_view(request, id):
     
     return render(request, "cal/delete_view.html", context)
     
+
+def return_home(request):
+    return render(request, "cal/return_home.html")
