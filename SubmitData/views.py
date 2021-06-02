@@ -1,3 +1,4 @@
+import csv, io 
 from django.shortcuts import render
 from django.db.models import Q
 import datetime
@@ -122,3 +123,23 @@ class YearlyMonthlySummaryView(LoginRequiredMixin, ListView):
 
 def BillStatement(request):
     return render(request, 'SubmitData/billstatement.html', {'title':'About'})
+
+def BillExport(request):
+
+    items = Post.objects.all().filter(author=request.user)
+    #export_user = Post.objects.filter(author=request.user)
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="billable_bill_data.csv"'
+
+    writer = csv.writer(response, delimiter=',')
+    writer.writerow(['title', 'company_name', 'account_number', 'statement_date', 'due_date', 'date_entered', 
+    'amount', 'is_paid', 'payment_method', 'previous_balance', 'minimum_payment', 'payments', 'credit', 'adjustment',
+    'late_fees', 'interest_charges'])
+
+    for obj in items:
+        writer.writerow([obj.title, obj.company_name, obj.account_number, obj.statement_date, obj.due_date, obj.date_entered, 
+    obj.amount, obj.is_paid, obj.payment_method, obj.previous_balance, obj.minimum_payment, obj.payments, obj.credit, obj.adjustment,
+    obj.late_fees, obj.interest_charges])
+
+    return response

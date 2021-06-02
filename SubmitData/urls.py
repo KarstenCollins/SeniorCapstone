@@ -5,7 +5,8 @@ from .views import (
     PostCreateView,
     BillStatement,
     PostUpdateView,
-    PostDeleteView
+    PostDeleteView,
+    BillExport, 
 )
 from BankInformation import views as bank_views
 from IncomeInformation import views as income_views
@@ -20,6 +21,7 @@ urlpatterns = [
     path('post/new/', PostCreateView.as_view(), name='create-data'),
     path('post/<int:pk>/update', PostUpdateView.as_view(), name='update-data'),
     path('post/<int:pk>/delete', PostDeleteView.as_view(), name='delete-data'),
+    path('DownloadBills', BillExport, name='download-bills'),
 
     path('ViewBanks/', bank_views.BankListView.as_view(), name='view-banks'),
     path('bank/<int:pk>/delete/', bank_views.BankDeleteView.as_view(), name='delete-bank'),
