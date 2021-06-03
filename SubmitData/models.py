@@ -15,7 +15,7 @@ class Post(models.Model):
     due_date = models.DateField(default=datetime.date.today)
     date_entered = models.DateField(default=datetime.date.today)
     amount = MoneyField(max_digits=14, decimal_places=2, default_currency='USD')
-    is_paid = models.BooleanField(default=0, help_text="Everything below is optional. Recommended if using a credit card.")
+    is_paid = models.BooleanField(default=0)
     payment_method = models.CharField(max_length=50, default="")
     author = models.ForeignKey(User, on_delete=models.CASCADE) #this is where the rel. is. Foreign key is the user
     previous_balance = models.IntegerField(blank=True, default='0')
