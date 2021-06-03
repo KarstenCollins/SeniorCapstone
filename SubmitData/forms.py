@@ -14,9 +14,11 @@ class PostForm(ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'company_name', 'account_number', 'statement_date', 'due_date', 
-        'amount', 'payment_method', 'is_paid', 'payment_method', 'is_paid', 'previous_balance','minimum_payment', 
-        'payments', 'adjustment', 'credit', 'late_fees', 'interest_charges']
+        'amount', 'payment_method', 'is_paid']
         widgets = {
             'statement_date' : DateInput(),
             'due_date' : DateInput(),
         }
+
+
+#'payment_method', 'is_paid', 'previous_balance','minimum_payment', 'payments', 'adjustment', 'credit', 'late_fees', 'interest_charges'
