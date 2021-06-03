@@ -24,7 +24,7 @@
         </tr>
         {% for incomes in incomefilter.qs %}
         <tr>
-            <td><a class="mr-2" href="#">{{ incomes.source_name }}</a></td>
+            <td><a class="mr-2" href="{% url 'income-detail' incomes.id %}">{{ incomes.source_name }}</a></td>
             <td>{{ incomes.amount }}</td>
             <td>{{ incomes.date_received }}</td>
         </tr>

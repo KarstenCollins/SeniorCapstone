@@ -30,8 +30,11 @@ urlpatterns = [
     path('bank/<int:pk>/', bank_views.BankDetailView.as_view(), name='bank-detail'),
                                             
 
+    path('ViewIncome/', income_views.IncomeListView.as_view(), name='view-incomes'),
+    path('income/<int:pk>/delete/', income_views.IncomeDeleteView.as_view(), name='delete-income'),
+    path('income/<int:pk>/update/', income_views.IncomeUpdateView.as_view(), name='update-income'),
     path('IncomeInfo/', income_views.IncomeCreateView.as_view(), name='create-income'),
-    path('ViewIncome/', income_views.IncomeListView.as_view(), name='view-Income'),
+    path('income/<int:pk>/', income_views.IncomeDetailView.as_view(), name='income-detail'),
 
     path('CompanyInfo/', company_views.CompanyCreateView.as_view(), name='create-company'),
     path('CompanyIncome/', company_views.CompanyListView.as_view(), name='view-company'),

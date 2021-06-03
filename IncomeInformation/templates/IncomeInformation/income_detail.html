@@ -1,0 +1,27 @@
+<!--everything from the base template-->
+{% extends "SubmitData/base.html"  %}
+
+<!--Unique content for the home page-->
+<!--Change db fields to be shown here-->
+
+{% block content %}
+<br>
+    <article class="media content-section">
+        <!--<img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">-->
+        <div class="media-body">
+        <div class="article-metadata">
+            <!--<a class="mr-2" href="#">{{ object.author }}</a>-->
+            <!--<small class="text-muted">{{ object.date_entered|date:"F d, Y" }}</small>-->
+            {% if object.user == user %}
+            <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'update-income' object.id %}">Update This Income</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'delete-income' object.id %}">Delete This Income</a>
+            {% endif%}
+            </div>
+        </div>
+        <h2 class="article-title"> <strong>{{ object.source_name }}</strong> </h2>
+        <p class="article-content"><strong>Amount:</strong> {{ object.amount }}</p>
+        <p class="article-content"><strong>Date Received:</strong> {{ object.date_received }}</p>
+        </div>
+    </article>
+{% endblock content %}
