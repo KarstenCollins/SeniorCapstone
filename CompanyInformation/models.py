@@ -6,7 +6,6 @@ from django.urls import reverse
 
 class Company(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, default="")
-    source_name = models.CharField( max_length=100)
     company_name = models.CharField( max_length=100)
     phone_number = models.IntegerField(max_length=10)
     address = models.CharField( max_length=100)
@@ -18,7 +17,7 @@ class Company(models.Model):
 
 
     def __str__(self):
-        return self.source_name
+        return self.company_name
 
     def get_absolute_url(self):
         return reverse('view-company')

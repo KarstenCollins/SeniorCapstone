@@ -35,6 +35,10 @@ urlpatterns = [
 
     path('CompanyInfo/', company_views.CompanyCreateView.as_view(), name='create-company'),
     path('CompanyIncome/', company_views.CompanyListView.as_view(), name='view-company'),
+    path('ViewCompanys/', company_views.CompanyListView.as_view(), name='view-companys'),
+     path('company/<int:pk>/', company_views.CompanyDetailView.as_view(), name='company-detail'),
+    path('company/<int:pk>/delete/', company_views.CompanyDeleteView.as_view(), name='delete-company'),
+    path('company/<int:pk>/update/', company_views.CompanyUpdateView.as_view(), name='update-company'),
 
     path('BillsNotPaid/', data_views.IsPaidView.as_view(), name='is-paid'),
     path('Summaries/', data_views.YearlyMonthlySummaryView.as_view(), name='view-summaries'),

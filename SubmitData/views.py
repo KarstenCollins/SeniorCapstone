@@ -71,9 +71,9 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    #fields = ['title', 'company_name', 'account_number', 'statement_date', 'due_date', 'amount', 'payment_method',  
-    #'is_paid', 'payment_method', 'is_paid', 'previous_balance','minimum_payment', 'payments', 'adjustment', 
-    # 'credit', 'late_fees', 'interest_charges']
+    fields = ['title', 'company_name', 'account_number', 'statement_date', 'due_date', 'amount', 'payment_method',  
+    'is_paid', 'payment_method', 'is_paid', 'previous_balance','minimum_payment', 'payments', 'adjustment', 
+     'credit', 'late_fees', 'interest_charges']
     
 
     def form_valid(self, form):
