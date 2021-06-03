@@ -11,6 +11,27 @@
                 <legend class="border-bottom mb-4">Bill Information</legend>
                 <!--Displays form as crispy style-->
                 {{ form|crispy }}
+                
+<!--Start Credit Card Button-->
+
+    <div class="container">
+        <form method="POST">
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Click to enter Credit Card Information</button>
+        <div id="demo" class="collapse">
+      <p>Previous Balance: </p>
+      <p>Minimum Payment: </p>
+      <p>Payments: </p>
+      <p>Adjustment: </p>
+      <p>Credit: </p>
+      <p>Late Fees: </p>
+      <p>Interest Charges: </p>
+    </div>
+        </form>
+  </div>
+
+
+<!--End Credit Card Button-->
+                   
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Submit</button>
